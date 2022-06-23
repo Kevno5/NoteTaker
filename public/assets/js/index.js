@@ -1,3 +1,5 @@
+const { notStrictEqual } = require("assert");
+
 let noteTitle;
 let noteText;
 let saveNoteBtn;
@@ -100,6 +102,7 @@ const handleNoteView = (e) => {
   e.preventDefault();
   activeNote = JSON.parse(e.target.parentElement.getAttribute('data-note'));
   renderActiveNote();
+  console.log();
 };
 
 // Sets the activeNote to and empty object and allows the user to enter a new note
@@ -158,8 +161,9 @@ const renderNoteList = async (notes) => {
     noteListItems.push(createLi('No saved Notes', false));
   }
 
-  jsonNotes.forEach((note) => {
+  jsonNotes.forEach((note, idx) => {
     const li = createLi(note.title);
+    note.id = idx
     li.dataset.note = JSON.stringify(note);
 
     noteListItems.push(li);
