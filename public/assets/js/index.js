@@ -1,4 +1,4 @@
-const { notStrictEqual } = require("assert");
+
 
 let noteTitle;
 let noteText;
@@ -161,9 +161,8 @@ const renderNoteList = async (notes) => {
     noteListItems.push(createLi('No saved Notes', false));
   }
 
-  jsonNotes.forEach((note, idx) => {
+  jsonNotes.forEach((note) => {
     const li = createLi(note.title);
-    note.id = idx
     li.dataset.note = JSON.stringify(note);
 
     noteListItems.push(li);
